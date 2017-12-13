@@ -9,4 +9,5 @@ $ResourceGroupName = (Get-AzureRmResourceGroup | Out-GridView -Title "Select you
 $VMName = (Get-AzureRmVM -ResourceGroupName $ResourceGroupName  | Out-GridView -Title "Select your Virtual Machine" -PassThru).Name
 ### Enter a time range greater than 6 minutes and request RDP access to the given VM
 $minutes = Read-Host "Enter the time range to open port 3389 on VM $VMName [minutes]"
-Invoke-ASCJITAccess -ResourceGroupName $ResourceGroupName -VM $VMName -Port 3389  -Minutes $minutes
+$ip = Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
+Invoke-ASCJITAccess -ResourceGroupName $ResourceGroupName -VM $VMName -Port 3389  -Minutes $minutes -AddressPrefix $ip
