@@ -9,5 +9,6 @@ $password = read-host -assecurestring
 Set-AzureKeyVaultSecret -VaultName Mykeyvault -Name admin -SecretValue $password
 
 # build credentials with KeyVault Secret
+$LocalAdminUser = "myAdmin"
 $Secret = Get-AzureKeyVaultSecret -VaultName MyKeyVault -Name admin
 $Cred = [PSCredential]::new($LocalAdminUser, $Secret.SecretValue)
