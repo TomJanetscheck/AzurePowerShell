@@ -5,7 +5,7 @@ $i = 0
 $accessPath = @()
 $accessPath += 102..121 | foreach {"$([char]$_):\" } ## add drive letters f:\ to y:\ to the array
 Foreach ($Disk in $Disks) {
-    Initialize-Disk -PartitionStyle GPT
+    Initialize-Disk $Disk.disknumber -PartitionStyle GPT
     New-Volume -Disk $Disk -FileSystem NTFS -FriendlyName Data -AccessPath $accessPath[$i]
     $i++
 }
