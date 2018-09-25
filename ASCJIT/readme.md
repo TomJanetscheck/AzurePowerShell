@@ -8,7 +8,7 @@ Make sure to install the Azure Security Center PowerShell module first so you ha
 Install the **unofficial** Azure Security Center PowerShell module.
 
 ```markdown
-install-module Azure-Security-Center
+Install-Module -Name Azure-Security-Center -RequiredVersion 0.0.22
 ```
 
 Further information about the module can be found [on GitHub](https://github.com/Microsoft/Azure-Security-Center).
