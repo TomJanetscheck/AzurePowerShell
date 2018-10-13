@@ -2,10 +2,10 @@
   Login-AzureRMAccount
 
 # Create Azure KeyVault
-  $vaultName = "InsiderDevTour2018CGN"
+  $vaultName = "CloudBrew2018DemoKeyVault"
   New-AzureRmKeyVault `
     -VaultName $vaultName `
-    -ResourceGroupName (New-AzureRmResourceGroup -Name InsiderDevTour2018 -Location "WestEurope").ResourceGroupName`
+    -ResourceGroupName (New-AzureRmResourceGroup -Name CloudBrew2018DemoRG -Location "WestEurope").ResourceGroupName`
     -Location "WestEurope" `
     -EnabledForDeployment `
     -EnabledForTemplateDeployment `
