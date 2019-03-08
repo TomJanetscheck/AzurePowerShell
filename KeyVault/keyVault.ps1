@@ -1,11 +1,11 @@
 # Login to Azure Subscription
-  Login-AzureRMAccount
+  Login-AzRMAccount
 
 # Create Azure KeyVault
-  $vaultName = "CloudBrew2018DemoKeyVault"
-  New-AzureRmKeyVault `
+  $vaultName = "IamaKeyVault"
+  New-AzKeyVault `
     -VaultName $vaultName `
-    -ResourceGroupName (New-AzureRmResourceGroup -Name CloudBrew2018DemoRG -Location "WestEurope").ResourceGroupName`
+    -ResourceGroupName (New-AzResourceGroup -Name KeyVaultDemo -Location "WestEurope").ResourceGroupName`
     -Location "WestEurope" `
     -EnabledForDeployment `
     -EnabledForTemplateDeployment `
@@ -14,9 +14,9 @@
 
 #Create a KeyVault Secret for a local admin password
   $password = read-host -assecurestring
-  Set-AzureKeyVaultSecret -VaultName $vaultName -Name admin -SecretValue $password
+  Set-AzKeyVaultSecret -VaultName $vaultName -Name admin -SecretValue $password
 
 # build credentials with KeyVault Secret
   $LocalAdminUser = "myAdmin"
-  $Secret = Get-AzureKeyVaultSecret -VaultName $vaultName -Name admin
+  $Secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name admin
   $Cred = [PSCredential]::new($LocalAdminUser, $Secret.SecretValue)
