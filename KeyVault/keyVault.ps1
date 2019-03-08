@@ -1,5 +1,5 @@
 # Login to Azure Subscription
-  Login-AzRMAccount
+  Login-AzAccount
 
 # Create Azure KeyVault
   $vaultName = "IamaKeyVault"
