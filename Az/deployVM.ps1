@@ -36,8 +36,7 @@
     Login-AzAccount
     Set-AzContext -SubscriptionId $subscriptionID
 
-
-        ### Check and/or create VM Resource Group
+### Check and/or create VM Resource Group
     $test = Get-AzResourceGroup -Name $VmRgName -ErrorAction SilentlyContinue
     If (!$test) {
         Write-Host "VM Resource Group not found, creating..." -ForegroundColor green
